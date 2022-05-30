@@ -968,6 +968,7 @@ setInterval(function(){
   $('.step__footer__continue-btn').off('click').click(function(){
    //alert('test')
    location.href = "./confirm.html";
+   event.preventDefault()
   })
 
   $('.cat_grid_item__link').attr("href", "./cart.html")

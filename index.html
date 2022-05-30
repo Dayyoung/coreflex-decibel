@@ -34,7 +34,7 @@
 <link id="sett_clt4" rel="stylesheet" href="./index_files/sett_cl.css" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;"><link rel="preload" as="style" href="./index_files/custom.scss.css"><link href="./index_files/custom.scss.css" rel="stylesheet" type="text/css" media="all"><link rel="stylesheet" href="./index_files/line-awesome.min.css" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;">
 
 <!--
-  
+
 <script async="" src="./index_files/analytics.js"></script>
 
 <script async="" src="./index_files/di.js"></script>
@@ -1238,10 +1238,13 @@ window["adrum-start-time"] = new Date().getTime();
 
 
 setInterval(function(){
-  //$('.cat_grid_item__link').off('click').click(function(){
-   //alert('test')
-   $('.cat_grid_item__link').attr("href", "./product.html")
-  //})
+  $('.cat_grid_item__link').off('click').click(function(){
+//   alert('test')
+
+   location.href = "./product.html";
+   event.preventDefault()
+   //$('.cat_grid_item__link').attr("href", "./product.html")
+  })
 }, 30);
 
 
