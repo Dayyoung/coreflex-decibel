@@ -40,6 +40,96 @@
 <script async="" src="./index_files/di-old.js"></script>
 -->
 
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+<script type="text/javascript">
+
+Kakao.init('4b0df8a22e4e20b92b5cbc1eaae634bb');
+Kakao.isInitialized();
+console.log(Kakao.isInitialized());
+
+setTimeout(function (argument) {
+  // body...
+
+    //alert(Kakao.Auth.getAccessToken())
+
+    if (Kakao.Auth.getAccessToken()) {
+      //alert('logged in.')
+      $('#loginButton').hide()
+      $('#logoutButton').show()
+    }else{
+      //alert('Not logged in.')
+      $('#loginButton').show()
+      $('#logoutButton').hide()
+    }
+
+},1000)
+
+
+
+function goLogin(){
+
+Kakao.Auth.loginForm({
+  success: function(authObj) {
+    console.log(JSON.stringify(authObj))
+
+
+    location.reload();
+    // Kakao.API.request({
+    //     url: '/v2/user/me',
+    //     success: function(res) {
+    //       //alert(JSON.stringify(res))
+    //     },
+    //     fail: function(error) {
+          
+    //       alert(
+    //         'login success, but failed to request user information: ' +
+    //           JSON.stringify(error)
+    //       )
+    //     },
+    //   })
+
+  },
+  fail: function(err) {
+    console.log(JSON.stringify(err))
+
+    location.reload();
+  },
+})
+
+} 
+
+</script>
+
+<script type="text/javascript">
+function goLogout(){
+
+  // if (!Kakao.Auth.getAccessToken()) {
+ //      alert('Not logged in.')
+ //      return
+ //    }
+
+  Kakao.Auth.logout(function() {
+    //alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken())
+  })
+
+
+ Kakao.API.request({
+      url: '/v1/user/unlink',
+      success: function(res) {
+        //alert('success: ' + JSON.stringify(res))
+        location.reload();
+      },
+      fail: function(err) {
+        //alert('fail: ' + JSON.stringify(err))
+        location.reload();
+      },
+    })
+
+} 
+
+</script>
+
 
 <script type="text/javascript" async="" src="./index_files/loader.js"></script><script type="text/javascript" async="" src="./index_files/trekkie.storefront.5d0cc2a550202c874679a4c3dc5335b1b7a06d8c.min.js"></script><script async="" src="./index_files/gtm.js"></script><script id="js_lzt4" src="./index_files/lazysizes.min.js" defer="defer"></script>
 <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'yes-js');const t_name = "index", t_cartCount = 0,ThemeIdT4 = null,ThemePuT4 = '#purchase_codet4',t_shop_currency = "USD", t_moneyFormat = "${{amount}}", t_cart_url = "\/cart", pr_re_url = "\/recommendations\/products"; if (performance.navigation.type === 2) {location.reload(true);}</script>
@@ -471,7 +561,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                <a class="lh__1 flex al_center pr" href="https://decibel.crflx.com/pages/about-us" target="_self" data-di-id="di-id-e5908b12-9c485897"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">회사 소개</font></font></a><div class="sub-menu calc_pos" style=""><div class="lazy_menu lazyload" data-include="/search?q=1585641835304&amp;view=header"><div class="lds_bginfinity pr"></div></div></div></li></ul>
 </nav>
 </div>
-        <div class="col-lg-auto col-md-4 col-3 tr col_group_btns"><div class="nt_action in_flex al_center cart_des_1"><a class="icon_search push_side cb chp" data-id="#nt_search_canvas" href="https://decibel.crflx.com/search" data-di-id="di-id-59fbefe9-b4ecad11"><i class="iccl iccl-search"></i></a><a class="icon_like cb chp pr dn db_md js_link_wis" href="https://decibel.crflx.com/search/?view=wish" data-di-id="di-id-3fe39742-6663cc10"><i class="iccl iccl-heart pr"><span class="op__0 ts_op pa tcount jswcount bgb br__50 cw tc"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">0</font></font></span></i></a><div class="icon_cart pr"><a class="push_side pr cb chp db" href="https://decibel.crflx.com/cart" data-id="#nt_cart_canvas" data-di-id="di-id-f389f8af-a43af0ec"><i class="iccl iccl-cart pr"><span class="op__0 ts_op pa tcount jsccount bgb br__50 cw tc"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">0</font></font></span></i></a></div></div></div></div>
+<!--
+        <div class="col-lg-auto col-md-4 col-3 tr col_group_btns"><div class="nt_action in_flex al_center cart_des_1"><a class="icon_search push_side cb chp" data-id="#nt_search_canvas" href="https://decibel.crflx.com/search" data-di-id="di-id-59fbefe9-b4ecad11"><i class="iccl iccl-search"></i></a><a class="icon_like cb chp pr dn db_md js_link_wis" href="https://decibel.crflx.com/search/?view=wish" data-di-id="di-id-3fe39742-6663cc10"><i class="iccl iccl-heart pr"><span class="op__0 ts_op pa tcount jswcount bgb br__50 cw tc"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">0</font></font></span></i></a>
+-->
+          <div id="loginButton" style="margin-right: 20px; display: none;" class="icon_cart pr"><a class="push_side pr cb chp db" onclick="goLogin()" >카카오 로그인</a></div>
+
+          <div id="logoutButton" style="margin-right: 20px; display: none;"  class="icon_cart pr"><a class="push_side pr cb chp db" onclick="goLogout()" >카카오 로그아웃</a></div>
+
+
+
+        </div></div></div>
   </div></div><style>.header__mid .css_h_se {min-height: 70px}.nt_menu >li>a{height:70px}</style></div></div>
 </header><div id="nt_content"><!-- BEGIN content_for_index --><div id="shopify-section-1581505806578" class="shopify-section nt_section type_slideshow type_carousel"><div class="SlideshowWrapper nt_se_1581505806578 nt_full se_height_cus_h nt_first">
 	<div class="fade_flick_1 slideshow row no-gutters equal_nt nt_slider js_carousel prev_next_0 btn_owl_1 dot_owl_2 dot_color_2 btn_vi_2 flickity-enabled is-draggable" data-flickity="{ &quot;fade&quot;:0,&quot;cellAlign&quot;: &quot;center&quot;,&quot;imagesLoaded&quot;: 0,&quot;lazyLoad&quot;: 0,&quot;freeScroll&quot;: 0,&quot;wrapAround&quot;: true,&quot;autoPlay&quot; : 0,&quot;pauseAutoPlayOnHover&quot; : true, &quot;rightToLeft&quot;: false, &quot;prevNextButtons&quot;: false,&quot;pageDots&quot;: true, &quot;contain&quot; : 1,&quot;adaptiveHeight&quot; : 1,&quot;dragThreshold&quot; : 5,&quot;percentPosition&quot;: 1 }" tabindex="0"><div class="flickity-viewport" style="height: 600px; touch-action: pan-y;"><div class="flickity-slider" style="left: 0px; transform: translateX(0%);"><div id="nt_1585640154849" class="col-12 slideshow__slide is-selected" style="position: absolute; left: 0%;"> 
