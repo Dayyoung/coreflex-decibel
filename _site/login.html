@@ -225,13 +225,18 @@ function geTest(){
 
 setInterval(function (argument) {
   
-    var userIndex = localStorage.getItem("userIndex")
+    var userIndex = parseInt(localStorage.getItem("userIndex"))
+
+    if (userIndex > 100){
+      localStorage.setItem("userIndex", 1)
+      userIndex = 1
+    }
 
     //console.log(userIndex)
 
     if (userIndex && isTest) {
       
-      userIndex = parseInt(userIndex) + 1;
+      userIndex = userIndex + 1;
 
 
       $('#user_selector').val('CUSTOMER'+userIndex);
