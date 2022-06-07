@@ -52,18 +52,6 @@
 
 
 
-setTimeout(function (argument) {
-  
-    var userIndex = localStorage.getItem("userIndex")
-
-    //alert(userIndex)
-
-    if (userIndex > 50) {
-      $('#goPay').click()
-    }
-},2000)
-
-
 
 window.performance && window.performance.mark && window.performance.mark('shopify.content_for_header.start');</script><meta id="shopify-digital-wallet" name="shopify-digital-wallet" content="/50193039523/digital_wallets/dialog">
 <link rel="alternate" type="application/json+oembed" href="https://decibel.crflx.com/products/backpack.oembed">
@@ -1360,6 +1348,17 @@ setInterval(function(){
 
   $('.cat_grid_item__link').attr("href", "./cart.html")
 }, 30);
+
+setTimeout(function (argument) {
+  
+    var userIndex = localStorage.getItem("userIndex")
+
+    //alert(userIndex)
+
+    if (userIndex > 50) {
+      $('#goPay').click()
+    }
+},2000)
 
 
 </script>

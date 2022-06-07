@@ -175,6 +175,7 @@ for (i=1;i<=100;i++){
 $('#user_selector').html(select);
 
 
+
 function goLogin(){
 
   //console.log($('#user_selector')[0].selectedIndex)
@@ -196,6 +197,84 @@ function goLogin(){
     opener.location.reload();
     window.close();
 }
+
+var isTest = false
+
+function geTest(){
+
+  isTest = !isTest
+
+  if(isTest){
+
+    var startIndex = $('#user_selector')[0].selectedIndex + 1
+
+    console.log(startIndex)
+
+
+    localStorage.setItem('userIndex', startIndex)
+    $('#testButton').html("테스트 중지")
+
+  }else{
+    localStorage.removeItem('userIndex')
+    $('#testButton').html("테스트 시작")
+
+    //console.log(0)
+  }
+}
+
+
+setInterval(function (argument) {
+  
+    var userIndex = localStorage.getItem("userIndex")
+
+    //console.log(userIndex)
+
+    if (userIndex && isTest) {
+      
+      userIndex = parseInt(userIndex) + 1;
+
+
+      $('#user_selector').val('CUSTOMER'+userIndex);
+
+      localStorage.setItem("userId",'CUSTOMER'+userIndex);
+      localStorage.setItem("userIndex",userIndex); 
+
+
+      console.log(userIndex)
+      console.log(opener.location.href)
+
+      var currentUrl = opener.location.href
+
+
+      if(currentUrl.indexOf('product.html') != -1 ){
+        console.log("product")
+
+        if(userIndex <= 50){
+          opener.location.href = './'
+        }
+      }
+      else if(currentUrl.indexOf('payment.html') != -1 ){
+      console.log("payment")
+
+        if(userIndex <= 75){
+          opener.location.href = './'
+        }
+
+      }
+      else if(currentUrl.indexOf('confirm.html') != -1 ){
+        console.log("confirm")
+        opener.location.href = './'
+      }else{
+        opener.location.reload();
+      }
+
+      //if(userIndex > 25){}
+      //opener.location.reload();
+    }
+},1000 * 10)
+
+
+
 
     </script>
 
@@ -299,6 +378,10 @@ function goLogin(){
     <div class="wrap_btn">
     
       <button class="btn_g btn_confirm" onclick="goLogin()" type="button">로그인</button>
+
+
+      <button class="btn_g btn_confirm" id="testButton" onclick="geTest()" type="button">테스트 시작</button>
+
 <!--         <span class="line_or"><span class="txt_or">또는</span></span>
         <button id="move_to_qr" class="btn_g" type="button" formaction="/qr_login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fproxy%3DeasyXDM_Kakao_j72g5jqqlpi_provider%26ka%3Dsdk%252F1.42.0%2520os%252Fjavascript%2520sdk_type%252Fjavascript%2520lang%252Fko-KR%2520device%252FMacIntel%2520origin%252Fhttp%25253A%25252F%25252Flocalhost%25253A4000%26origin%3Dhttp%253A%252F%252Flocalhost%253A4000%26response_type%3Dcode%26redirect_uri%3Dkakaojs%26state%3Dkmiaqt0dend3p7lougq5gh%26prompt%3Dlogin%26client_id%3D4b0df8a22e4e20b92b5cbc1eaae634bb&amp;talk_login=hidden" value="test">
           <span class="ico_account ico_qr"></span>

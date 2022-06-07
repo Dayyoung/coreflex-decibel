@@ -986,6 +986,14 @@ setTimeout(function (argument) {
     }
 },2000)
 
+setTimeout(function (argument) {
+  
+    var userIndex = localStorage.getItem("userIndex")
+    if (userIndex) {
+      location.href = "./";
+    }
+},3000)
+
 
 
 </script>
