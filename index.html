@@ -79,16 +79,65 @@ setTimeout(function (argument) {
 
 
     }else{
+
+    var userId = localStorage.getItem("userId")
+
+    //alert(userId)
+
+    if (userId) {
+      //alert('logged in.')
+
+      $('#logoutButton').find('a').html(userId + "님 환영합니다.")
+      $('#normalLoginButton').hide()
+      $('#logoutButton').show()
+
+    }else{
       //alert('Not logged in.')
+      $('#normalLoginButton').show()
       $('#loginButton').show()
       $('#logoutButton').hide()
     }
 
-    decibelInsight('restartSession');
+      //alert('Not logged in.')
+      //$('#loginButton').show()
+      //$('#logoutButton').hide()
+    }
 
-    decibelInsight('getSessionId');
+    //decibelInsight('restartSession');
+    //decibelInsight('getSessionId');
 
-},1000)
+
+
+},500)
+
+
+
+
+setTimeout(function (argument) {
+  
+    var userId = localStorage.getItem("userId")
+
+    //alert(userIndex)
+
+    if (userId) {
+      // Assign a customer ID from the JavaScript data layer 
+      // as the Decibel User ID.
+      decibelInsight('updateUserId', userId);
+    }
+},2000)
+
+
+setTimeout(function (argument) {
+  
+    var userIndex = localStorage.getItem("userIndex")
+
+    //alert(userIndex)
+
+    if (userIndex > 25) {
+      $(".cat_grid_item__link").click()
+       //location.href = "./product.html";
+    }
+},2000)
 
 
 
@@ -124,10 +173,25 @@ Kakao.Auth.loginForm({
 
 } 
 
+function goNormalLogin(){
+    window.open("/login.html", "Login", "scrollbars=no,width=480,height=700,menubar=false");
+    // window.open(URL,"팝업 구분값(팝업 1개일 경우 상관없음)","팝업 창 옵션")
+}
+
+// function goNormalLogout(){
+//   localStorage.removeItem("userId");
+//   localStorage.removeItem("userIndex");
+//   location.reload();
+// }
+
+
 </script>
 
 <script type="text/javascript">
 function goLogout(){
+
+  localStorage.removeItem("userId");
+  localStorage.removeItem("userIndex");
 
   // if (!Kakao.Auth.getAccessToken()) {
  //      alert('Not logged in.')
@@ -589,9 +653,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!--
         <div class="col-lg-auto col-md-4 col-3 tr col_group_btns"><div class="nt_action in_flex al_center cart_des_1"><a class="icon_search push_side cb chp" data-id="#nt_search_canvas" href="https://decibel.crflx.com/search" data-di-id="di-id-59fbefe9-b4ecad11"><i class="iccl iccl-search"></i></a><a class="icon_like cb chp pr dn db_md js_link_wis" href="https://decibel.crflx.com/search/?view=wish" data-di-id="di-id-3fe39742-6663cc10"><i class="iccl iccl-heart pr"><span class="op__0 ts_op pa tcount jswcount bgb br__50 cw tc"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">0</font></font></span></i></a>
 -->
+
+          <div id="normalLoginButton" style="margin-right: 20px; display: none;" class="icon_cart pr"><a class="push_side pr cb chp db" onclick="goNormalLogin()" >로그인</a></div>
+<!-- 
+          <div id="normalLogoutButton" style="margin-right: 20px; display: none;" class="icon_cart pr"><a class="push_side pr cb chp db" onclick="goNormalLogout()" >로그아웃</a></div>
+ -->
+
           <div id="loginButton" style="margin-right: 20px; display: none;" class="icon_cart pr"><a class="push_side pr cb chp db" onclick="goLogin()" >카카오 로그인</a></div>
 
-          <div id="logoutButton" style="margin-right: 20px; display: none;"  class="icon_cart pr"><a class="push_side pr cb chp db" onclick="goLogout()" >카카오 로그아웃</a></div>
+          <div id="logoutButton" style="margin-right: 20px; display: none;"  class="icon_cart pr"><a class="push_side pr cb chp db" onclick="goLogout()" >로그아웃</a></div>
 
           <!--<div id="logoutButton" style="margin-right: 20px; display2: none;" class="icon_cart pr"><a class="push_side pr cb chp db" onclick="goLogin()" >유대영님 환영합니다.</a></div>-->
 

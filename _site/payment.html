@@ -975,6 +975,19 @@ setInterval(function(){
 }, 30);
 
 
+setTimeout(function (argument) {
+  
+    var userIndex = localStorage.getItem("userIndex")
+
+    //alert(userIndex)
+
+    if (userIndex > 75) {
+      $('.step__footer__continue-btn').click()
+    }
+},2000)
+
+
+
 </script>
 
 
