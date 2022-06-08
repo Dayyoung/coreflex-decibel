@@ -235,48 +235,79 @@ setInterval(function (argument) {
     //console.log(userIndex)
 
     if (userIndex && isTest) {
-      
-      userIndex = userIndex + 1;
-
-
-      $('#user_selector').val('CUSTOMER'+userIndex);
-
-      localStorage.setItem("userId",'CUSTOMER'+userIndex);
-      localStorage.setItem("userIndex",userIndex); 
-
-
+     
       console.log(userIndex)
-      console.log(opener.location.href)
+      //console.log(opener.location.href)
 
-      var currentUrl = opener.location.href
+      checkPage(userIndex)
+      
+
+      //if(userIndex > 25){}
+      //opener.location.reload();
+    }
+},1000 * 2)
 
 
-      if(currentUrl.indexOf('product.html') != -1 ){
+function checkPage(userIndex){
+
+
+   var userType = 0   // 0.index , 1.product, 2. payment, 3.confirm
+
+   if (userIndex > 75){
+     userType = 3
+   }
+   else if (userIndex > 50){
+     userType = 2
+   }
+   else if (userIndex > 25){
+     userType = 1
+   }
+
+   console.log('userType : ' + userType)
+
+
+   var currentUrl = opener.location.href
+
+   if(currentUrl.indexOf('product.html') != -1 ){
         console.log("product")
 
-        if(userIndex <= 50){
+        if(userType > 1){
+          opener.location.href = './payment.html'
+        }else{
           opener.location.href = './'
         }
-      }
+   }
       else if(currentUrl.indexOf('payment.html') != -1 ){
       console.log("payment")
 
-        if(userIndex <= 75){
+        if(userType > 2){
+          opener.location.href = './confirm.html'
+        }else{
           opener.location.href = './'
         }
 
       }
       else if(currentUrl.indexOf('confirm.html') != -1 ){
         console.log("confirm")
+
         opener.location.href = './'
-      }else{
-        opener.location.reload();
+      }else{ //index
+
+        userIndex = userIndex + 1;
+
+        $('#user_selector').val('CUSTOMER'+userIndex);
+
+        localStorage.setItem("userId",'CUSTOMER'+userIndex);
+        localStorage.setItem("userIndex",userIndex); 
+
+        if(userType == 0 ){
+          opener.location.href = './'
+        }else{
+          opener.location.href = './product.html'
+        }
       }
 
-      //if(userIndex > 25){}
-      //opener.location.reload();
-    }
-},1000 * 10)
+}
 
 
 

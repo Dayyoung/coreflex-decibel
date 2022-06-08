@@ -103,40 +103,37 @@ setTimeout(function (argument) {
       //$('#logoutButton').hide()
     }
 
-    //decibelInsight('restartSession');
-    //decibelInsight('getSessionId');
-
-
+    decibelInsight('restartSession');
+    decibelInsight('getSessionId');
 
 },500)
 
 
 
-
-setTimeout(function (argument) {
+// setTimeout(function (argument) {
   
-    var userId = localStorage.getItem("userId")
+//     var userId = localStorage.getItem("userId")
 
-    //alert(userIndex)
+//     //alert(userIndex)
 
-    if (userId) {
-      // Assign a customer ID from the JavaScript data layer 
-      // as the Decibel User ID.
-      decibelInsight('updateUserId', userId);
-    }
-},2000)
+//     if (userId) {
+//       // Assign a customer ID from the JavaScript data layer 
+//       // as the Decibel User ID.
+//       decibelInsight('updateUserId', userId);
+//     }
+// },1000)
 
-setTimeout(function (argument) {
+// setTimeout(function (argument) {
   
-    var userIndex = localStorage.getItem("userIndex")
+//     var userIndex = localStorage.getItem("userIndex")
 
-    //alert(userIndex)
+//     //alert(userIndex)
 
-    if (userIndex > 25) {
-      $(".cat_grid_item__link").click()
-       //location.href = "./product.html";
-    }
-},2000)
+//     if (userIndex > 25) {
+//       $(".cat_grid_item__link").click()
+//        //location.href = "./product.html";
+//     }
+// },2000)
 
 
 
