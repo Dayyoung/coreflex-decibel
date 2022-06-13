@@ -976,9 +976,8 @@ setInterval(function(){
 
 
 function confirmOrder(){
-  console.log('test!!')
   // Trigger a tracked event with a fixed value.
-  decibelInsight('sendTrackedEvent', 'Order Confirmation', 'BAG');
+  decibelInsight('sendTrackedEvent', 'Buy item', 100);
   $('#continue_button').click()
   
 }

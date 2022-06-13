@@ -90,10 +90,6 @@ setTimeout(function (argument) {
       $('#logoutButton').find('a').html(userId + "님 환영합니다.")
       $('#normalLoginButton').hide()
       $('#logoutButton').show()
-
-      // Assign a customer ID from the JavaScript data layer 
-      // as the Decibel User ID.
-      decibelInsight('updateUserId', userId);
     
     }else{
       //alert('Not logged in.')
@@ -113,18 +109,18 @@ setTimeout(function (argument) {
 },500)
 
 
-// setTimeout(function (argument) {
+setTimeout(function (argument) {
   
-//     var userId = localStorage.getItem("userId")
+    var userId = localStorage.getItem("userId")
 
-//     console(userIndex)
+    console(userIndex)
 
-//     if (userId) {
-//       // Assign a customer ID from the JavaScript data layer 
-//       // as the Decibel User ID.
-//       decibelInsight('updateUserId', userId);
-//     }
-// },1000)
+    if (userId) {
+      // Assign a customer ID from the JavaScript data layer 
+      // as the Decibel User ID.
+      decibelInsight('updateUserId', userId);
+    }
+},1000)
 
 // setTimeout(function (argument) {
   
