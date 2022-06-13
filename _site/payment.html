@@ -975,6 +975,15 @@ setInterval(function(){
 }, 30);
 
 
+function confirmOrder(){
+  console.log('test!!')
+  // Trigger a tracked event with a fixed value.
+  decibelInsight('sendTrackedEvent', 'Order Confirmation', 'BAG');
+  $('#continue_button').click()
+  
+}
+
+
 // setTimeout(function (argument) {
   
 //     var userIndex = localStorage.getItem("userIndex")

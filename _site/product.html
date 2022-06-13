@@ -1349,6 +1349,14 @@ setInterval(function(){
   $('.cat_grid_item__link').attr("href", "./cart.html")
 }, 30);
 
+
+function checkOut(){
+  // Trigger a tracked event with a fixed value.
+  decibelInsight('sendTrackedEvent', 'Checkout', 100,);
+  $('#goPay').click()
+}
+
+
 // setTimeout(function (argument) {
   
 //     var userIndex = localStorage.getItem("userIndex")
