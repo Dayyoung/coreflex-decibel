@@ -113,14 +113,14 @@ setTimeout(function (argument) {
   
     var userId = localStorage.getItem("userId")
 
-    console(userIndex)
+    console('CHANGE!! : ' + userIndex)
 
     if (userId) {
       // Assign a customer ID from the JavaScript data layer 
       // as the Decibel User ID.
       decibelInsight('updateUserId', userId);
     }
-},1000)
+},2000)
 
 // setTimeout(function (argument) {
   
