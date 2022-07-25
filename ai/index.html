@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Auto Impoter(AI) Example</title>
+	<link rel="stylesheet" href="css/csvtable.css" type="text/css" />
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="js/jquery.csvToTable.js"></script>
+	<script type="text/javascript" src="js/jquery.tablesorter.dev.js"></script>
+	<script src="https://smtpjs.com/v3/smtp.js"></script> 
+
+
+	<script>
+	$(function() {
+		// $.get('test.csv', function(data) {
+		// 	$('#CSVSource').html('<pre>' + data + '</pre>');
+		// });
+		// $('#CSVTable').CSVToTable('test.csv', { loadingImage: 'images/loading.gif', startLine: 0 });
+		// $.get('test.tsv', function(data) {
+		// 	$('#TSVSource').html('<pre>' + data + '</pre>');
+		// });
+		//$('#TSVTable').CSVToTable('test.tsv', { loadingText: 'Loading TSV Data...', loadingImage: 'images/loading.gif', startLine: 0, separator: "\t" });
+		
+		$('#invitationTable').CSVToTable('invitation.csv', { loadingImage: 'images/loading.gif', startLine: 0}).bind("loadComplete",function() { 
+			$('#invitationTable').find('TABLE').tablesorter();
+		});
+
+			$('#orgTable').CSVToTable('org.csv', { loadingImage: 'images/loading.gif', startLine: 0 }).bind("loadComplete",function() { 
+			$('#orgTable').find('TABLE').tablesorter();
+		});
+				$('#historicalTable').CSVToTable('historical.csv', { loadingImage: 'images/loading.gif', startLine: 0 }).bind("loadComplete",function() { 
+			$('#historicalTable').find('TABLE').tablesorter();
+		});
+	});
+
+	//index.js  
+function sendEmail() {
+	Email.send({
+	Host: "smtp.gmail.com",
+	Username : "coreflex.smtp@gmail.com",
+	Password : "smtppassword",
+	To : 'dryudryu@crflx.com',
+	From : "dryudryu@crflx.com",
+	Subject : "test_SMTP",
+	Body : "test",
+	}).then(
+		message => alert("mail sent successfully")
+	);
+}
+
+
+	</script>
+	</head>
+	<body>
+
+<div class="jquery-script-clear"></div>
+</div>
+
+</div>
+<div style="max-width:720px; margin:50px auto">
+<h1>Auto Impoter(AI) Example</h1>
+
+<br>
+Invitation : <br>
+<br>
+
+<button type="button" onclick="sendEmail()">Active</button>
+<br>
+
+<div id="invitationTable"> </div>
+
+<br>
+Org Hieararchy : <br>
+<br>
+<div id="orgTable"> </div>
+
+<br>
+Historical Data : <br>
+<br>
+<div id="historicalTable"> </div>
+
+
+</div>
+
+
+</body>
+</html>
