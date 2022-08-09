@@ -156,6 +156,9 @@ setTimeout(function (argument) {
       // Assign a customer ID from the JavaScript data layer 
       // as the Decibel User ID.
       decibelInsight('updateUserId', userId);
+
+      
+      decibelInsight('sendCustomDimension', 'VisitorID', userId);
     }
 },2000)
 
