@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script type="text/javascript">
+
+
+function appendHtml(el, str) {
+  var div = document.createElement('div');
+  div.innerHTML = str;
+  while (div.children.length > 0) {
+    el.appendChild(div.children[0]);
+  }
+}
+
+var html1 = '<center><a id="cardButton" onClick="goCard(123456)" style="z-index:99999; width:150px; padding:10px; color: white; background: #4E9CAF;">123456</a></center><br><br><br><br>';
+
+
+var html2 = '<center><a id="cardButton" onClick="goCard(1234567)" style="z-index:99999; width:150px; padding:10px; color: white; background: #4E9CAF;">1234567</a></center><br><br><br><br>';
+
+
+var html3 = '<center><a id="cardButton" onClick="goCard(\'123ABC45\')" style="z-index:99999; width:150px; padding:10px; color: white; background: #4E9CAF;">123ABC45</a></center><br><br><br><br>';
+
+var html4 = '<center><a id="cardButton" onClick="goCard(\'ABC12345\')" style="z-index:99999; width:150px; padding:10px; color: white; background: #4E9CAF;">ABC12345</a></center><br><br><br><br>';
+
+
+var cardButton = document.getElementById("cardButton")
+if(!cardButton) {
+    
+    //alert("test")
+    
+    setTimeout(function(){
+        console.log('fired!')
+        appendHtml(document.body, html1); // "body" has two more children - h1 and span.
+        appendHtml(document.body, html2); // "body" has two more children - h1 and span.
+        appendHtml(document.body, html3); // "body" has two more children - h1 and span.
+        appendHtml(document.body, html4); // "body" has two more children - h1 and span.
+    }, 1000)
+}
+
+
+function goCard(id){
+    
+    var convertedId = covertUserId(id)
+
+    alert(convertedId)
+}
+
+
+function covertUserId(userid)  {
+        
+        //alert(userid)
+    
+        var charPosition = 0
+        var covertedUserId = userid
+            
+        for (i in userid) {
+            
+            var originalString = userid.charAt(i)
+            var originalInt = originalString.charCodeAt(0);
+            
+            //Has Char? -> Coverte.
+            if (originalInt > 57) {
+                covertedUserId = covertedUserId.replace(originalString, String(originalInt))
+                charPosition = parseInt(i)
+             }
+        }
+
+        //Has Char? -> Init positon.
+        if(charPosition > 0){
+            charPosition = userid.length - charPosition
+        }
+
+        covertedUserId = "1" + charPosition + pad(covertedUserId,11)
+        console.log(covertedUserId)
+        return covertedUserId
+}
+    
+function pad(n, width, z) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
+
+
+//var result = covertUserId('123456')
+//var result = covertUserId('1234567')
+//var result = covertUserId('123ABC45')
+//var result = covertUserId('ABC12345')
+//console.log(result)
+
+  </script>
+</head>
+
+
+<body>
+  <br>
+  <br>
+  <br>
+</body>
+
+</html>
+

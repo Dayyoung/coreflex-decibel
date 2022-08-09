@@ -38,16 +38,25 @@
 
 	//index.js  
 function sendEmail() {
+	// Email.send({
+	// Host: "smtp.elasticemail.com",
+	// Username : "dryudryu@gmail.com",
+	// Password : "929578BE61DCADDA64BE6B5E903C576B5C2F",
+	// To : 'dryudryu@crflx.com',
+	// From : "dryudryu@crflx.com",
+	// Subject : "test_SMTP",
+	// Body : "test",
+	// }).then(
+	// 	message => alert("mail sent successfully")
+	// );
 	Email.send({
-	Host: "smtp.elasticemail.com",
-	Username : "dryudryu@gmail.com",
-	Password : "929578BE61DCADDA64BE6B5E903C576B5C2F",
-	To : 'dryudryu@crflx.com',
-	From : "dryudryu@crflx.com",
-	Subject : "test_SMTP",
-	Body : "test",
+    SecureToken : 'd06ce917-b6f1-4b25-af58-968f9f45f18e',
+    To : 'dryudryu@crflx.com',
+    From : "dryudryu@crflx.com ",
+    Subject : "This is the subject",
+    Body : "And this is the body"
 	}).then(
-		message => alert("mail sent successfully")
+	  message => alert(message)
 	);
 }
 
