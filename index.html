@@ -157,8 +157,10 @@ setTimeout(function (argument) {
       // as the Decibel User ID.
       decibelInsight('updateUserId', userId);
 
-      
-      decibelInsight('sendCustomDimension', 'VisitorID', userId);
+
+      decibelInsight('sendCustomDimension', 'SESSIONID', userId);
+      decibelInsight('sendCustomDimension', 'PAGEID', userId);
+      decibelInsight('sendCustomDimension', 'VISITORID', userId);
     }
 },2000)
 
