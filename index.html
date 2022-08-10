@@ -145,6 +145,13 @@ setTimeout(function (argument) {
 
 },500)
 
+setTimeout(function (argument) {
+
+  // Enable collection for the current session 
+  // and future sessions for the current visitor.
+  decibelInsight('setCollection', true);  
+
+},1000)
 
 setTimeout(function (argument) {
   
@@ -155,7 +162,7 @@ setTimeout(function (argument) {
     if (userId) {
       // Assign a customer ID from the JavaScript data layer 
       // as the Decibel User ID.
-      decibelInsight('updateUserId', userId);
+      //decibelInsight('updateUserId', userId);
 
 
       decibelInsight('sendCustomDimension', 'SESSIONID', userId);
