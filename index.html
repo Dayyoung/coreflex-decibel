@@ -81,6 +81,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script type="text/javascript">
 
+win.onbeforeunload = function(){
+    console.log("closed");
+    location.reload();
+}
+
+
 Kakao.init('4b0df8a22e4e20b92b5cbc1eaae634bb');
 Kakao.isInitialized();
 console.log(Kakao.isInitialized());
