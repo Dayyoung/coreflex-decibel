@@ -81,6 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script type="text/javascript">
 
+
 Kakao.init('4b0df8a22e4e20b92b5cbc1eaae634bb');
 Kakao.isInitialized();
 console.log(Kakao.isInitialized());
@@ -189,12 +190,12 @@ setTimeout(function (argument) {
 
 function goLogin(){
 
-Kakao.Auth.loginForm({
+var popup = Kakao.Auth.loginForm({
   success: function(authObj) {
     console.log(JSON.stringify(authObj))
 
 
-    //location.reload();
+    location.reload();
     
     // Kakao.API.request({
     //     url: '/v2/user/me',
@@ -217,6 +218,11 @@ Kakao.Auth.loginForm({
     location.reload();
   },
 })
+
+
+popup.addEventListener('beforeunload', function() {
+    console.log('팝업창 닫힘')
+});
 
 } 
 

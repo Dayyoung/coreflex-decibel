@@ -190,12 +190,12 @@ setTimeout(function (argument) {
 
 function goLogin(){
 
-Kakao.Auth.loginForm({
+var popup = Kakao.Auth.loginForm({
   success: function(authObj) {
     console.log(JSON.stringify(authObj))
 
 
-    //location.reload();
+    location.reload();
     
     // Kakao.API.request({
     //     url: '/v2/user/me',
@@ -218,6 +218,11 @@ Kakao.Auth.loginForm({
     location.reload();
   },
 })
+
+
+popup.addEventListener('beforeunload', function() {
+    console.log('팝업창 닫힘')
+});
 
 } 
 
