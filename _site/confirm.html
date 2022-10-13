@@ -536,6 +536,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </center>
 
     <script>
+
+
+    decibelInsight('sendTrackedEvent', 'Buy item', 100);
+    decibelInsight('restartSession');
+
     document.getElementById("purchase").addEventListener("click", function () {
         gtag("event", "purchase", {
                 // This purchase event uses a different transaction ID
