@@ -1013,12 +1013,12 @@ setInterval(function(){
 }, 30);
 
  console.log("Decibel -  Add Item.")
-
-decibelInsight('sendTrackedEvent', 'Add Cart', 'BAG');
+ decibelInsight('sendTrackedEvent', 'Add Item');
+ //decibelInsight('sendTrackedEvent', 'Add item', 'BACK');
 
 function confirmOrder(){
-//    decibelInsight('sendTrackedEvent', 'Buy item', 100);
   // Trigger a tracked event with a fixed value.
+  //decibelInsight('sendTrackedEvent', 'Buy item', 100);
   $('#continue_button').click()
   
 }
