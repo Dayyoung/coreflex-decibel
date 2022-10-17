@@ -537,11 +537,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <script>
 
-    console.log("Decibel -  Buy Item.")
+    setInterval(function(){
+      console.log("Decibel -  Buy Item.")
+      decibelInsight('sendTrackedEvent', 'Buy item', 100);
 
-    decibelInsight('sendTrackedEvent', 'Buy item', 100);
-    //decibelInsight('restartSession');
-
+      //end session
+      decibelInsight('endSession');
+    }, 500);
+   
     document.getElementById("purchase").addEventListener("click", function () {
         gtag("event", "purchase", {
                 // This purchase event uses a different transaction ID

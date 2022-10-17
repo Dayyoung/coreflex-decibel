@@ -1012,9 +1012,11 @@ setInterval(function(){
   $('.cat_grid_item__link').attr("href", "./cart.html")
 }, 30);
 
+
+setInterval(function(){
  console.log("Decibel -  Add Item.")
- decibelInsight('sendTrackedEvent', 'Add Item');
- //decibelInsight('sendTrackedEvent', 'Add item', 'BACK');
+ decibelInsight('sendTrackedEvent', 'Add item', 0);
+}, 500);
 
 function confirmOrder(){
   // Trigger a tracked event with a fixed value.
