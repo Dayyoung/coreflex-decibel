@@ -129,6 +129,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script type="text/javascript">
 
+function getCookie(cookieName){
+    var cookieValue=null;
+    if(document.cookie){
+        var array=document.cookie.split((escape(cookieName)+'='));
+        if(array.length >= 2){
+            var arraySub=array[1].split(';');
+            cookieValue=unescape(arraySub[0]);
+        }
+    }
+    return cookieValue;
+}
+
+console.log(getCookie('_ga').split(/[.]+/).pop())
+
+function getGAID(){
+  var GAID = getCookie('_ga').split(/[.]+/).pop()
+
+  if(GAID){
+    return GAID
+  }else{
+    return
+  }
+
+}
+
+//alert(getGAID())
+
 
 function buttonEvent(number) {
 
