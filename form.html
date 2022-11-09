@@ -56,12 +56,43 @@ console.log($('.unMasking > p:eq(2)').html())
 // data-di-mask
 $('.unMasking > p:eq(2)').addClass('data-di-mask')
 
+//$('input').each()
+
+  $('input').each(function( index, value ) {
+    console.log( index + ": " + $(value).attr('type') );
+    console.log( "result : " + check(value) );
+    
+
+
+  });
+
+function check(field) {
+    // Locate the error element by finding the first sibling with a "error" class
+    var error = field.parentNode ? field.parentNode.querySelector('.error') : false;
+
+    // If no error element exists, end the function by returning false
+    if(!error) return false;
+    // If an error exists and has text, trim the text and return the message
+    return error.innerText ? error.innerText.trim() : false;
+}
+
 });
   
 
 </script>
 
 <body style="margin-left: 100px;">
+
+
+
+<h2>Form Test</h2>
+<form action="submit.php" method="POST" id="contact">
+<label>First name: <input type="text" name="first_name">
+<span class="error">First name must be provided</span>
+</label>
+<label>Last name: <input type="text" name="last_name"></label>
+<input type="submit" value="Submit">
+</form>
 
 <h2>Div1 (All masking)</h2>
 <div class="allMasking">
@@ -94,7 +125,7 @@ $('.unMasking > p:eq(2)').addClass('data-di-mask')
 </div>
 
 
-<h2>Form</h2>
+<!-- <h2>Form</h2>
 <form action="./form.html">
   <label for="fname">name:</label><br>
   <input type="text" id="fname" name="fname" value="John Doe"><br>
@@ -105,7 +136,8 @@ $('.unMasking > p:eq(2)').addClass('data-di-mask')
   <label for="lname">hobby:</label><br>
   <input type="text" id="lname" name="lname" value="basketball"><br><br>
   <input type="submit" value="확인">
-</form> 
+</form>  -->
+
 
 
 </body>
