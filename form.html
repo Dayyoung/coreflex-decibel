@@ -86,7 +86,16 @@ function check(field) {
 
 
 <h2>Form Test</h2>
-<form action="submit.php" method="POST" id="contact">
+<form action="submit.php" method="POST" id="contact" data-di-form-track data-di-form-id="contact">
+<label>First name: <input type="text" name="first_name">
+<span class="error">First name must be provided</span>
+</label>
+<label>Last name: <input type="text" name="last_name"></label>
+<input type="submit" value="Submit">
+</form>
+
+<h2>Form Test2</h2>
+<form action="submit.php" method="POST" id="contact2" data-di-form-track data-di-form-id="contact2">
 <label>First name: <input type="text" name="first_name">
 <span class="error">First name must be provided</span>
 </label>
