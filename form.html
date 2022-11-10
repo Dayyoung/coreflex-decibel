@@ -54,7 +54,8 @@ $(window).load(function(){
 console.log($('.unMasking > p:eq(2)').html())
 
 // data-di-mask
-$('.unMasking > p:eq(2)').addClass('data-di-mask')
+//$('.unMasking > p:eq(2)').addClass('data-di-mask')
+$('.unMasking > p:eq(2)').attr('data-di-mask','123')
 
 //$('input').each()
 
@@ -64,27 +65,27 @@ $('.unMasking > p:eq(2)').addClass('data-di-mask')
 
   });
 
-function check(field) {
-    // Locate the error element by finding the first sibling with a "error" class
-    var error = field.parentNode ? field.parentNode.querySelector('.error') : false;
+// function check(field) {
+//     // Locate the error element by finding the first sibling with a "error" class
+//     var error = field.parentNode ? field.parentNode.querySelector('.error') : false;
 
-    // If no error element exists, end the function by returning false
-    if(!error) return false;
-    // If an error exists and has text, trim the text and return the message
-    return error.innerText ? error.innerText.trim() : false;
-}
+//     // If no error element exists, end the function by returning false
+//     if(!error) return false;
+//     // If an error exists and has text, trim the text and return the message
+//     return error.innerText ? error.innerText.trim() : false;
+// }
 
-});
+// });
 
-function validateForm() {
-  let x = document.forms["myForm"]["first_name"].value;
-  if (x == "") {
-    $('.error').show()
-    //alert("Name must be filled out");
-    //document.getElementsByClassName("errorText").style.visibility = "visible";
-    return false;
-  }
-}
+// function validateForm() {
+//   let x = document.forms["myForm"]["first_name"].value;
+//   if (x == "") {
+//     $('.error').show()
+//     //alert("Name must be filled out");
+//     //document.getElementsByClassName("errorText").style.visibility = "visible";
+//     return false;
+//   }
+// }
   
 
 </script>

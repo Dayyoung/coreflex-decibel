@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
-<title>coreflex - Masking</title>	
+<title>coreflex - Form</title>	
 <meta charset="utf-8" />
 <meta name="application-name" content="coreflex"/>
 <meta name="viewport" content="width=device-width, initial-scale=1 , viewport-fit=cover">
@@ -54,7 +54,8 @@ $(window).load(function(){
 console.log($('.unMasking > p:eq(2)').html())
 
 // data-di-mask
-$('.unMasking > p:eq(2)').addClass('data-di-mask')
+//$('.unMasking > p:eq(2)').addClass('data-di-mask')
+$('.unMasking > p:eq(2)').attr('data-di-mask','123')
 
 //$('input').each()
 
@@ -64,27 +65,27 @@ $('.unMasking > p:eq(2)').addClass('data-di-mask')
 
   });
 
-function check(field) {
-    // Locate the error element by finding the first sibling with a "error" class
-    var error = field.parentNode ? field.parentNode.querySelector('.error') : false;
+// function check(field) {
+//     // Locate the error element by finding the first sibling with a "error" class
+//     var error = field.parentNode ? field.parentNode.querySelector('.error') : false;
 
-    // If no error element exists, end the function by returning false
-    if(!error) return false;
-    // If an error exists and has text, trim the text and return the message
-    return error.innerText ? error.innerText.trim() : false;
-}
+//     // If no error element exists, end the function by returning false
+//     if(!error) return false;
+//     // If an error exists and has text, trim the text and return the message
+//     return error.innerText ? error.innerText.trim() : false;
+// }
 
-});
+// });
 
-function validateForm() {
-  let x = document.forms["myForm"]["first_name"].value;
-  if (x == "") {
-    $('.error').show()
-    //alert("Name must be filled out");
-    //document.getElementsByClassName("errorText").style.visibility = "visible";
-    return false;
-  }
-}
+// function validateForm() {
+//   let x = document.forms["myForm"]["first_name"].value;
+//   if (x == "") {
+//     $('.error').show()
+//     //alert("Name must be filled out");
+//     //document.getElementsByClassName("errorText").style.visibility = "visible";
+//     return false;
+//   }
+// }
   
 
 </script>
@@ -110,14 +111,14 @@ function validateForm() {
 </form>
 
 <h2>Form Test2</h2>
-<form action="form.html" method="POST" id="contact2" data-di-form-track data-di-form-id="contact2">
-<label>Q1: <input type="text" name="Q1" data-di-field-id="Q1">
+<form action="form.html" method="POST" id="contact2" data-di-form-track data-di-form-id="contact2" data-di-unmask-field>
+<label>Q1: <input type="text" name="Q1" data-di-field-id="Q1" data-di-unmask-field>
 </label>
 
 <br>
 <br>
 
-<label>Q2: <input type="text" name="Q2" data-di-field-id="Q2"></label>
+<label>Q2: <input type="text" name="Q2" data-di-field-id="Q2" data-di-unmask-field></label>
 
 <br>
 <br><input type="submit" value="Submit">
