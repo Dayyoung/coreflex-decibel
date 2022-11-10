@@ -61,8 +61,6 @@ $('.unMasking > p:eq(2)').addClass('data-di-mask')
   $('input').each(function( index, value ) {
     console.log( index + ": " + $(value).attr('type') );
     console.log( "result : " + check(value) );
-    
-
 
   });
 
@@ -77,6 +75,16 @@ function check(field) {
 }
 
 });
+
+function validateForm() {
+  let x = document.forms["myForm"]["first_name"].value;
+  if (x == "") {
+    $('.error').show()
+    //alert("Name must be filled out");
+    //document.getElementsByClassName("errorText").style.visibility = "visible";
+    return false;
+  }
+}
   
 
 </script>
@@ -86,71 +94,48 @@ function check(field) {
 
 
 <h2>Form Test</h2>
-<form action="form.html" method="GET" id="contact" data-di-form-track data-di-form-id="contact">
+<form name="myForm" action="form.html" method="POST" onsubmit="return validateForm()" id="contact" data-di-form-track data-di-form-id="contact">
 <label>First name: <input type="text" name="first_name"  data-di-field-id="firstname">
-<span class="error">First name must be provided</span>
+<br>
+<span class="error" name="errorText" style="display: none"><font color='red'>First name must be provided</font></span>
 </label>
 
 <br>
 
 <label>Last name: <input type="text" name="last_name"  data-di-field-id="lastname"></label>
+
+<br>
+<br>
 <input type="submit" value="Submit">
 </form>
 
 <h2>Form Test2</h2>
-<form action="form.html" method="GET" id="contact2" data-di-form-track data-di-form-id="contact2">
+<form action="form.html" method="POST" id="contact2" data-di-form-track data-di-form-id="contact2">
 <label>Q1: <input type="text" name="Q1" data-di-field-id="Q1">
 </label>
 
 <br>
+<br>
 
 <label>Q2: <input type="text" name="Q2" data-di-field-id="Q2"></label>
-<input type="submit" value="Submit">
+
+<br>
+<br><input type="submit" value="Submit">
 </form>
 
-<h2>Div1 (All masking)</h2>
-<div class="allMasking">
-  <label>email:</label>
-  <p>test@test.com</p>
-  <label>phone:</label>
-  <p>010-0000-0000</p>
-  <label>number:</label>
-  <p>123456789</p><br>
-</div>
+<h2>Form Test3</h2>
+<form action="form.html" method="GET" id="contact3" data-di-form-track data-di-form-id="contact3">
+<label>Q3: <input type="text" name="Q3" data-di-field-id="03">
+</label>
 
-<h2>Div2 (One masking)</h2>
-<div>
-  <label>email:</label>
-  <p class="masking">test@test.com</p>
-  <label>phone:</label>
-  <p>010-0000-0000</p>
-  <label>number:</label>
-  <p>123456789</p><br>
-</div>
+<br>
+<br>
 
-<h2>Div3 (UnMasking)</h2>
-<div class="unMasking">
-  <label>email:</label>
-  <p>test@test.com</p>
-  <label>phone:</label>
-  <p>010-0000-0000</p>
-  <label>number:</label>
-  <p>123456789</p><br>
-</div>
+<label>Q4: <input type="text" name="Q4" data-di-field-id="Q4"></label>
 
-
-<!-- <h2>Form</h2>
-<form action="./form.html">
-  <label for="fname">name:</label><br>
-  <input type="text" id="fname" name="fname" value="John Doe"><br>
-  <label for="lname">phone:</label><br>
-  <input type="text" id="lname" name="lname" value="010-2333-23223"><br>
-  <label for="lname">email:</label><br>
-  <input type="text" id="lname" name="lname" value="test@test.com"><br>
-  <label for="lname">hobby:</label><br>
-  <input type="text" id="lname" name="lname" value="basketball"><br><br>
-  <input type="submit" value="확인">
-</form>  -->
+<br>
+<br><input type="submit" value="Submit">
+</form>
 
 
 
