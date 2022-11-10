@@ -65,6 +65,9 @@ $('.unMasking > p:eq(2)').attr('data-di-mask','123')
 
   });
 
+});
+
+
 // function check(field) {
 //     // Locate the error element by finding the first sibling with a "error" class
 //     var error = field.parentNode ? field.parentNode.querySelector('.error') : false;
@@ -75,9 +78,9 @@ $('.unMasking > p:eq(2)').attr('data-di-mask','123')
 //     return error.innerText ? error.innerText.trim() : false;
 // }
 
-// });
 
 function validateForm() {
+  //console.log('test')
   let x = document.forms["myForm"]["first_name"].value;
   if (x == "") {
     $('.error').show()

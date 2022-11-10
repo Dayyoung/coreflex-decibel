@@ -65,6 +65,9 @@ $('.unMasking > p:eq(2)').attr('data-di-mask','123')
 
   });
 
+});
+
+
 // function check(field) {
 //     // Locate the error element by finding the first sibling with a "error" class
 //     var error = field.parentNode ? field.parentNode.querySelector('.error') : false;
@@ -75,17 +78,17 @@ $('.unMasking > p:eq(2)').attr('data-di-mask','123')
 //     return error.innerText ? error.innerText.trim() : false;
 // }
 
-// });
 
-// function validateForm() {
-//   let x = document.forms["myForm"]["first_name"].value;
-//   if (x == "") {
-//     $('.error').show()
-//     //alert("Name must be filled out");
-//     //document.getElementsByClassName("errorText").style.visibility = "visible";
-//     return false;
-//   }
-// }
+function validateForm() {
+  //console.log('test')
+  let x = document.forms["myForm"]["first_name"].value;
+  if (x == "") {
+    $('.error').show()
+    //alert("Name must be filled out");
+    //document.getElementsByClassName("errorText").style.visibility = "visible";
+    return false;
+  }
+}
   
 
 </script>
@@ -95,7 +98,7 @@ $('.unMasking > p:eq(2)').attr('data-di-mask','123')
 
 
 <h2>Form Test</h2>
-<form name="myForm" action="form.html" method="POST" onsubmit="return validateForm()" id="contact" data-di-form-track data-di-form-id="contact">
+<form name="myForm" action="form.html" method="POST" onsubmit="return validateForm()" id="contact" data-di-form-track data-di-form-id="contact1">
 <label>First name: <input type="text" name="first_name"  data-di-field-id="firstname">
 <br>
 <span class="error" name="errorText" style="display: none"><font color='red'>First name must be provided</font></span>
@@ -126,13 +129,13 @@ $('.unMasking > p:eq(2)').attr('data-di-mask','123')
 
 <h2>Form Test3</h2>
 <form action="form.html" method="GET" id="contact3" data-di-form-track data-di-form-id="contact3">
-<label>Q3: <input type="text" name="Q3" data-di-field-id="03">
+<label>Q3: <input type="text" name="Q3">
 </label>
 
 <br>
 <br>
 
-<label>Q4: <input type="text" name="Q4" data-di-field-id="Q4"></label>
+<label>Q4: <input type="text" name="Q4"></label>
 
 <br>
 <br><input type="submit" value="Submit">
