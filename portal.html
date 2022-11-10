@@ -309,6 +309,20 @@ var size = {
 
 //console.log(size)
 
+var i = 0
+
+function goNext(){
+
+  i = i + 1
+
+  $("#myImg").attr("src", "./portalImage/" + i + ".png");
+
+  if (i == 5)
+  {
+    i = 0
+  }
+}
+
 </script>
 
 
@@ -319,11 +333,11 @@ var size = {
 <div id="mainLayout">
 
 
-<div onclick="location.href='./item.html'" id="popupLayout" style="position:absolute;background-color:red;opacity:0; top: 0; width: 100%; height:  100% ;">
+<div onclick="goNext()" id="popupLayout" style="position:absolute;background-color:red;opacity:0; top: 0; width: 100%; height:  100% ;">
 </div> 
 
 
-<img onload="onResume()" src="shop.png" id="myImg" src="" height="100%" width="100%" class="fixed" style="max-width: 18000px; 
+<img onload="onResume()" src="./portalImage/1.png" id="myImg" src="" height="100%" width="100%" class="fixed" style="max-width: 18000px; 
   display: block; margin-left: auto; margin-right: auto; z-index: 1000; ">
 
 <!-- 
