@@ -46,6 +46,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script type="text/javascript">
 
+
+
+var this2 = 
+{
+    isEmpty : function ( str )
+    {
+        return (str == '' || str == undefined || str == null || str == 'null' );
+    },
+
+    isNotEmpty : function(str)
+    {
+        return !this.isEmpty(str);
+    },
+
+    Sizzle : function(str)
+    {
+        return !this.isEmpty(str);
+    }
+};
+ 
+
 $(window).load(function(){
 
 //console.log($('.unMasking > p:first').html())
@@ -59,6 +80,13 @@ $('.unMasking > p:eq(2)').attr('data-di-mask','123')
 
 //$('input').each()
 
+  $('form').each(function( index, value ) {
+    //console.log( index + ": " + $(value).attr('type') );
+    console.log( "result : " + checkForm(value) );
+
+  });
+
+
   $('input').each(function( index, value ) {
     console.log( index + ": " + $(value).attr('type') );
     console.log( "result : " + check(value) );
@@ -68,15 +96,49 @@ $('.unMasking > p:eq(2)').attr('data-di-mask','123')
 });
 
 
-// function check(field) {
-//     // Locate the error element by finding the first sibling with a "error" class
-//     var error = field.parentNode ? field.parentNode.querySelector('.error') : false;
+function checkForm(form){
+  if (!this2.isEmpty(form.getAttribute('data-di-form-id'))) {
+    return form.getAttribute('data-di-form-id');
+} else if (!this2.isEmpty(form.getAttribute('name'))) {
+    return form.getAttribute('name');
+} else if (!this2.isEmpty(form.getAttribute('id'))) {
+    return form.getAttribute('id');
+}
+return '';
+}
 
-//     // If no error element exists, end the function by returning false
-//     if(!error) return false;
-//     // If an error exists and has text, trim the text and return the message
-//     return error.innerText ? error.innerText.trim() : false;
-// }
+
+function check(field) {
+    // // Locate the error element by finding the first sibling with a "error" class
+    // var error = field.parentNode ? field.parentNode.querySelector('.error') : false;
+
+    // // If no error element exists, end the function by returning false
+    // if(!error) return false;
+    // // If an error exists and has text, trim the text and return the message
+    // return error.innerText ? error.innerText.trim() : false;
+
+    if (field.parentNode && field.parentNode.nodeName.toUpperCase() === 'LABEL') {
+        //return this2.Sizzle.getText(field.parentNode);
+        return "1"
+    }
+    if (!this2.isEmpty(field.id)) {
+        // var labelList = this2.Sizzle('label[for=\''+field.id+'\']');
+        // if (labelList.length) {
+        //     return this2.Sizzle.getText(labelList[0]);
+        // }
+
+        return "2"
+    }
+    if (!this2.isEmpty(field.getAttribute('data-di-field-id'))) {
+        return field.getAttribute('data-di-field-id');
+    }
+    if (!this2.isEmpty(field.id)) {
+        return field.id;
+    }
+return field.name;
+
+
+}
 
 
 function validateForm() {
