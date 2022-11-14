@@ -72,7 +72,7 @@ $(window).load(function(){
 //console.log($('.unMasking > p:first').html())
 
 
-console.log($('.unMasking > p:eq(2)').html())
+//console.log($('.unMasking > p:eq(2)').html())
 
 // data-di-mask
 //$('.unMasking > p:eq(2)').addClass('data-di-mask')
@@ -82,14 +82,16 @@ $('.unMasking > p:eq(2)').attr('data-di-mask','123')
 
   $('form').each(function( index, value ) {
     //console.log( index + ": " + $(value).attr('type') );
-    console.log( "result : " + checkForm(value) );
+    //console.log( "result : " + checkForm(value) );
+    check(value);
 
   });
 
 
   $('input').each(function( index, value ) {
-    console.log( index + ": " + $(value).attr('type') );
+    //console.log( index + ": " + $(value).attr('type') );
     console.log( "result : " + check(value) );
+    //check(value);
 
   });
 
@@ -117,26 +119,43 @@ function check(field) {
     // // If an error exists and has text, trim the text and return the message
     // return error.innerText ? error.innerText.trim() : false;
 
-    if (field.parentNode && field.parentNode.nodeName.toUpperCase() === 'LABEL') {
-        //return this2.Sizzle.getText(field.parentNode);
-        return "1"
-    }
-    if (!this2.isEmpty(field.id)) {
-        // var labelList = this2.Sizzle('label[for=\''+field.id+'\']');
-        // if (labelList.length) {
-        //     return this2.Sizzle.getText(labelList[0]);
-        // }
+    // if (field.parentNode && field.parentNode.nodeName.toUpperCase() === 'LABEL') {
+    //     //return this2.Sizzle.getText(field.parentNode);
+    //     return "1"
+    // }
+    // if (!this2.isEmpty(field.id)) {
+    //     // var labelList = this2.Sizzle('label[for=\''+field.id+'\']');
+    //     // if (labelList.length) {
+    //     //     return this2.Sizzle.getText(labelList[0]);
+    //     // }
 
-        return "2"
-    }
-    if (!this2.isEmpty(field.getAttribute('data-di-field-id'))) {
-        return field.getAttribute('data-di-field-id');
-    }
-    if (!this2.isEmpty(field.id)) {
-        return field.id;
-    }
+    //     return "2"
+    // }
+    // if (!this2.isEmpty(field.getAttribute('data-di-field-id'))) {
+    //     return field.getAttribute('data-di-field-id');
+    // }
+    // if (!this2.isEmpty(field.id)) {
+    //     return field.id;
+    // }
+    // return field.name;
+
+
+//if (field.parentNode && field.parentNode.nodeName.toUpperCase() === 'LABEL') {
+    //return this.Sizzle.getText(field.parentNode);
+//}
+//if (!this.isEmpty(field.id)) {
+ //   var labelList = this.Sizzle('label[for=\''+field.id+'\']');
+  //  if (labelList.length) {
+ //       return this.Sizzle.getText(labelList[0]);
+ //   }
+//}
+if (!this2.isEmpty(field.getAttribute('data-di-field-id'))) {
+    return field.getAttribute('data-di-field-id') + "-tag";
+}
+if (!this2.isEmpty(field.id)) {
+    return field.id;
+}
 return field.name;
-
 
 }
 
@@ -153,6 +172,9 @@ function validateForm() {
 }
   
 
+//var ranNum = Math.floor(Math.random() * 10 + 1); 
+//alert(ranNum)
+
 </script>
 
 <body style="margin-left: 100px;">
@@ -163,7 +185,7 @@ function validateForm() {
 <form name="myForm" action="form.html" method="POST" onsubmit="return validateForm()" id="contact" data-di-form-track data-di-form-id="contact1">
 <label>First name: <input type="text" name="first_name"  data-di-field-id="firstname">
 <br>
-<span class="error" name="errorText" style="display: none"><font color='red'>First name must be provided</font></span>
+<span class="error" name="errorText" data-di-field-error-for style="display: none"><font color='red'>First name must be provided</font></span>
 </label>
 
 <br>
@@ -172,35 +194,38 @@ function validateForm() {
 
 <br>
 <br>
-<input type="submit" value="Submit">
+<input type="submit" value="Submit" id="submit1">
 </form>
 
 <h2>Form Test2</h2>
 <form action="form.html" method="POST" id="contact2" data-di-form-track data-di-form-id="contact2" data-di-unmask-field>
-<label>Q1: <input type="text" name="Q1" data-di-field-id="Q1" data-di-unmask-field>
+<label>Q1: <input type="text" name="Q1" data-di-field-id="Q1" data-di-unmask-field class="noPII" data-di-field-ignore>
 </label>
 
 <br>
 <br>
 
-<label>Q2: <input type="text" name="Q2" data-di-field-id="Q2" data-di-unmask-field></label>
+<label>Q2: <input type="text" name="Q2" data-di-field-id="Q2" data-di-unmask-field class="noPII" data-di-field-ignore></label>
 
 <br>
-<br><input type="submit" value="Submit">
+<br><input type="submit" value="Submit" id="submit2">
 </form>
 
 <h2>Form Test3</h2>
 <form action="form.html" method="GET" id="contact3" data-di-form-track data-di-form-id="contact3">
-<label>Q3: <input type="text" name="Q3">
+<label>Q3: 
+    <input type="text" name="Q3-input" data-di-field-ignore>
 </label>
 
 <br>
 <br>
 
-<label>Q4: <input type="text" name="Q4"></label>
+<label>Q4: 
+    <input type="text" name="Q4-input" data-di-field-ignore>
+</label>
 
 <br>
-<br><input type="submit" value="Submit">
+<br><input type="submit" value="Submit" id="submit3">
 </form>
 
 
