@@ -178,9 +178,11 @@ function sendForm(){
     var newForm = $('<form></form>');
     //set attribute (form) 
     newForm.attr("name","newForm");
-    newForm.attr("method","post");
+    //newForm.attr("method","post");
+    newForm.attr("method","get");
     newForm.attr("action","form.html");
-    newForm.attr("target","_blank");
+    //newForm.attr("target","_blank");
+    newForm.attr("target","frAttachFiles");
 
     // create element & set attribute (input) 
     newForm.append($('<input/>', {type: 'hidden', name: 'data1', value:'value1' }));
@@ -203,7 +205,7 @@ function sendForm(){
 
 <body style="margin-left: 100px;">
 
-
+<iframe name="frAttachFiles" style="display:none;"></iframe>
 
 <h2>Form Test</h2>
 <form name="myForm" action="form.html" method="POST" onsubmit="return validateForm()" id="contact" data-di-form-track data-di-form-id="contact1">
