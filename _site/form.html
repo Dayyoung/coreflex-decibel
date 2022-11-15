@@ -171,6 +171,30 @@ function validateForm() {
   }
 }
   
+function sendForm(){
+    
+    /* JQUERY */ 
+    //create element (form)
+    var newForm = $('<form></form>');
+    //set attribute (form) 
+    newForm.attr("name","newForm");
+    newForm.attr("method","post");
+    newForm.attr("action","form.html");
+    newForm.attr("target","_blank");
+
+    // create element & set attribute (input) 
+    newForm.append($('<input/>', {type: 'hidden', name: 'data1', value:'value1' }));
+    newForm.append($('<input/>', {type: 'hidden', name: 'data2', value:'value2' }));
+
+    // append form (to body) 
+    newForm.appendTo('body');
+
+    // submit form
+    newForm.submit();
+
+}
+
+
 
 //var ranNum = Math.floor(Math.random() * 10 + 1); 
 //alert(ranNum)
@@ -227,6 +251,22 @@ function validateForm() {
 <br>
 <br><input type="submit" value="Submit" id="submit3">
 </form>
+
+
+<h2>Form Test4 (Not form)</h2>
+<label>Q5: 
+    <input type="text" name="Q5-input" data-di-field-ignore>
+</label>
+
+<br>
+<br>
+
+<label>Q6: 
+    <input type="text" name="Q6-input" data-di-field-ignore>
+</label>
+
+<br>
+<br><input type="button" value="Submit" id="submit4" onclick="sendForm()">
 
 
 
