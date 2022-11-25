@@ -223,19 +223,22 @@ function sendForm(){
 
 <body style="margin-left: 100px;">
 
+<iframe name="frAttachFiles" style="display:none;"></iframe>
 
-<h2>Form Test2</h2>
-<form action="form.html" method="POST" id="contact2" data-di-form-track data-di-form-id="contact2" >
-<label>Q1: <input type="text" name="Q1" data-di-field-id="Q1" >
+<h2>Form Test</h2>
+<form name="myForm" action="form.html" method="POST" onsubmit="return validateForm()" id="contact" data-di-form-track data-di-form-id="contact1">
+<label>First name: <input type="text" name="first_name"  data-di-field-id="firstname">
+<br>
+<span class="error" name="errorText" data-di-field-error-for style="display: none"><font color='red'>First name must be provided</font></span>
 </label>
 
 <br>
-<br>
 
-<label>Q2: <input type="text" name="Q2" data-di-field-id="Q2" ></label>
+<label>Last name: <input type="text" name="last_name"  data-di-field-id="lastname"></label>
 
 <br>
-<br><input type="submit" value="Submit" id="submit2">
+<br>
+<input type="submit" value="Submit" id="submit1">
 </form>
 
 
