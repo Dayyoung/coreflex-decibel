@@ -8578,6 +8578,17 @@ $("#teconsent a").css({"border":"1px solid black","padding":"10px", "color":"#00
                             }
                            };
 
+var startTime = new Date()
+    let sum = 0;
+  for (let i = 1; i <= 1000000; i++) {
+    sum = sum + i;
+  }
+var endTime = new Date()
+
+var Performance = endTime-startTime
+console.log("Performance : " + Performance)
+
+
 //  window.addEventListener('load', (event) => {
     (function(d,e,c,i,b,el,it) {
       d.DecibelInsight=b;d[b]=d[b]||function(){(d[b].q=d[b].q||[]).push(arguments);};
