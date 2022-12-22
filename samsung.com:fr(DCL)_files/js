@@ -1,0 +1,29 @@
+			// sv.ciblelink.com
+VeoTarg.Writer("https://sv.ciblelink.com/profiling/perform.php?name=&action=Index");
+(function() {
+ var localStorageSupported = function() {
+  try {
+   if (typeof(localStorage) == "undefined") {
+    return false;
+   }
+   localStorage.setItem("test", "test");
+   localStorage.removeItem("test");
+   return true;
+  } catch(e){
+   return false;
+  }
+ }
+ if (localStorageSupported()) {
+  localStorage.removeItem("vuidck");
+  localStorage.setItem("vuidck", "ed2dc719-fd27-4b7e-959c-310d9f1966a6");
+ }
+
+var j = new Date(); j.setTime(j.getTime() + (7776000 * 1000));var expires = "; expires=" + j.toGMTString();document.cookie = "vuidck=ed2dc719-fd27-4b7e-959c-310d9f1966a6" + expires + "; path=/";
+})();
+
+// SirData
+VeoTarg.Writer("https://js.cookieless-data.com/LAL.d?pa=23079&target=1&u=https%3A%2F%2Fwww.samsung.com%2F&r=&is_client=0&rand=1671719305657820651");
+
+// sv.ciblelink.com
+VeoTarg.Writer("https://sv.ciblelink.com/profiling/perform.php?name=Samsung Electronics France&action=HOME&r=16717193051446464903");
+

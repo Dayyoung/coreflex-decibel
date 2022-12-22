@@ -1,0 +1,12 @@
+var ipc; var ips; var ipt; var companyInfo;
+console.log("starting GetQuanty analysis");
+
+var siteid='2091275159';
+var GQ_email='';
+
+
+//newsession
+
+//tracking
+
+//end

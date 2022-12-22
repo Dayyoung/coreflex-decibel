@@ -1,0 +1,123 @@
+var VeoTarg = {
+    Writer: function (url, charset) { 
+        var container = document.getElementsByTagName("head").item(0); 
+        if (container) { 
+            script = document.createElement("script"); script.type = "text/javascript"; 
+            if (typeof charset == "string" && charset.length > 0) { 
+                script.charset = charset; 
+            } 
+            script.async = "async"; 
+            script.defer = "defer"; 
+            script.src = url; 
+            container.appendChild(script); 
+        } 
+    }, Caller: function (a) {
+        var vUrl = VeoUrl; 
+        if (document.charset) { 
+            vUrl += "&charset=" + this.protectString(document.charset); 
+        } if (a) {
+            try {
+                for (var key in a) {
+                    if (!a.hasOwnProperty(key)) {
+                        continue;
+                    } 
+                    if (typeof (a[key]) == "object" && key == "products") { 
+                        var tmp = ""; 
+                        for (p in a[key]) {
+                            if (!a[key].hasOwnProperty(p)) { 
+                                continue; 
+                            } 
+                            if (typeof (a[key][p]) != "object") { 
+                                tmp += a[key][p]; 
+                                continue; 
+                            } 
+                            tmp += this.protectString(a[key][p]["id"]) + ":" + this.protectString(a[key][p]["price"]) + ":" + this.protectString(a[key][p]["quantity"]) + ";"; 
+                        } 
+                        vUrl += "&" + key + "=" + tmp; 
+                    } else { 
+                        vUrl += "&" + key + "=" + this.protectString(a[key]); 
+                    }
+                }
+            } catch (f) { }
+        }
+        var data = this.findUUID(); 
+        if (data != null) { 
+            vUrl += "&uuid=" + data.uuid; 
+        } 
+        this.Writer(vUrl, "UTF-8");
+    }, findUUID: function () {
+        var getQueryVariable = function (name) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&"); 
+            if (typeof (vars) == "undefined" || vars.length == 0) { return null; } 
+            for (var i in vars) { 
+                if (!vars.hasOwnProperty(i)) { continue; } 
+                if (typeof (vars[i]) == "undefined") { continue; } 
+                else { 
+                    if (typeof (vars[i]) != "string") { 
+                        vars[i] = vars[i].toString(); 
+                    } 
+                } 
+                var pair = vars[i].split("="); 
+                if (pair[0] == name) { return pair[1]; } 
+            } 
+            return null;
+        }; 
+        var readCookieVariable = function (name) {
+            var l = name + "="; 
+            var m = document.cookie.split(";"); 
+            for (var i = 0; i < m.length; i++) {
+                var d = m[i]; 
+                while (d.charAt(0) == " ") {
+                    d = d.substring(1, d.length);
+                } 
+                if (d.indexOf(l) == 0) { 
+                    return d.substring(l.length, d.length); 
+                }
+            } return null;
+        }; 
+        var method = null; 
+        var uuid = getQueryVariable("vuidlk"); 
+        if (uuid != null) { 
+            method = "query"; 
+        } 
+        if (uuid == null && typeof (localStorage) != "undefined") { 
+            try {
+                if (localStorage.getItem("vuidck") != null) { 
+                    uuid = localStorage.getItem("vuidck"); 
+                    if (uuid != null) { 
+                        method = "localStorage"; 
+                    } 
+                }
+            } catch(e) {
+                return false;
+            }
+        } 
+        if (uuid == null) { 
+            uuid = readCookieVariable("vuidck"); 
+            if (uuid != null) { 
+                method = "cookie"; 
+            } 
+        } 
+        if (uuid != null) { 
+            var data = new Object(); data.method = method; data.uuid = uuid; return data; } return null;
+    }, 
+    protectString: function (value) { 
+        if (typeof encodeURIComponent == "function") { 
+            return encodeURIComponent(value); 
+        } else {
+            value = encodeURI(value); 
+            var source = [",", "/", "?", ":", "@", "&", "=", "+", "$", "#"]; 
+            var target = ["%2C", "%2F", "%3F", "%3A", "%40", "%26", "%3D", "%2B", "%24", "%23"]; 
+            for (i in source) { 
+                 value = value.replace(source[i], target[i]); 
+            } 
+            return value;
+        } 
+    }
+};
+var VeoUrl = "https://profiling.veoxa.com/store/js?aid=1383&pid=2186&action=Index&rand=1671719304_628158247";
+if (typeof(document.referrer) == "string") {
+	VeoUrl+= "&referrer=" + VeoTarg.protectString(document.referrer);
+}
+VeoTarg.Caller();

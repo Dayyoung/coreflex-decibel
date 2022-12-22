@@ -32,9 +32,6 @@
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"/>
 
-   <!-- 화면 캡쳐 CDN -->
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -42,7 +39,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-WGP3RH6');</script>
 <!-- End Google Tag Manager -->
-
 
 </head>
 
@@ -67,30 +63,7 @@ var this2 =
         return !this.isEmpty(str);
     }
 };
- 
 
-setTimeout(function(){
-
-    var sessionId = decibelInsight('getSessionId');
-
-    html2canvas(document.querySelector("body")).then(canvas => {
-        saveAs(canvas.toDataURL('image/jpg'),sessionId); //다운로드 되는 이미지 파일 이름 지정
-    });
-
-    function saveAs(uri, filename) {
-        // 캡처된 파일을 이미지 파일로 내보냄
-        var link = document.createElement('a');
-        if (typeof link.download === 'string') {
-            link.href = uri;
-            link.download = filename;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-      } else {
-            window.open(uri);
-      }
-    }
-},2000); 
 
 $(window).load(function(){
 
@@ -251,14 +224,14 @@ function sendForm(){
 
 
 <h2>Form Test2</h2>
-<form action="form2.html" method="POST" id="contact2" data-di-form-track data-di-form-id="contact2" >
-<label>Q1: <input type="text" name="Q1" data-di-field-id="Q1" value="111" >
+<form action="form2.html" method="POST" id="contact2">
+<label>Q1: <input type="text" name="Q1" value="111" >
 </label>
 
 <br>
 <br>
 
-<label>Q2: <input type="text" name="Q2" data-di-field-id="Q2"  value="111"></label>
+<label>Q2: <input type="text" name="Q2" value="111"></label>
 
 <br>
 <br><input type="submit" value="Submit" id="submit2">
